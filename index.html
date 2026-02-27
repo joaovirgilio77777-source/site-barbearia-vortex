@@ -9,8 +9,8 @@
     <style>
         :root {
             --primary: #25d366; 
-            --text-button: #1e293b; /* Cor escura para o texto dentro dos botões brancos */
-            --text-light: #ffffff;   /* Cor branca para os títulos que ficam direto no fundo */
+            --text-button: #1e293b; 
+            --text-light: #ffffff;   
         }
 
         body { 
@@ -20,10 +20,9 @@
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            color: var(--text-light); /* Deixa os títulos brancos por padrão */
+            color: var(--text-light); 
         }
         
-        /* Fundo Borrado */
         .background-image {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -44,13 +43,12 @@
 
         .links-area { display: grid; gap: 16px; width: 100%; }
         
-        /* Ajuste dos botões para aparecer o texto */
         .card {
             background: #ffffff;
             padding: 18px;
             border-radius: 16px;
             text-decoration: none;
-            color: var(--text-button) !important; /* FORÇA a cor escura no texto */
+            color: var(--text-button) !important; 
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -58,12 +56,13 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: 0.3s;
             cursor: pointer;
+            border: none;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .card:hover { transform: scale(1.02); background: #f8fafc; }
-        
-        /* Cor específica para o botão do WhatsApp */
-        .featured { background: var(--primary); color: white !important; border: none; }
+        .featured { background: var(--primary); color: white !important; }
 
         .footer-tag { 
             margin-top: 50px; 
@@ -71,6 +70,21 @@
             border-top: 1px solid rgba(255,255,255,0.2); 
             font-size: 0.75rem; 
             color: #ddd;
+        }
+
+        /* Estilo do Modal */
+        #modal-precos {
+            display: none; 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.85); 
+            z-index: 9999; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 20px; 
+            box-sizing: border-box; 
+            backdrop-filter: blur(5px);
         }
     </style>
 </head>
@@ -91,7 +105,7 @@
             </a>
 
             <div onclick="document.getElementById('modal-precos').style.display='flex'" class="card">
-                <span><i class="fas fa-scissors"></i> PREÇOS</span>
+                <span><i class="fas fa-list-ul"></i> PREÇOS</span>
                 <i class="fas fa-chevron-right"></i>
             </div>
 
@@ -108,34 +122,25 @@
 
         <div class="footer-tag">
             <p>© 2026 Vortex Digital</p>
-            <p>Criado por <strong>Vortex</strong> • <a href="https://wa.me/5511971865479?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20horário" style="color: var(--primary); text-decoration: none;">Quero um site assim</a></p>
+            <p>Criado por <strong>Vortex</strong> • <a href="https://wa.me/5511971865479" style="color: var(--primary); text-decoration: none;">Quero um site assim</a></p>
         </div>
     </div>
 
-    <div id="modal-precos" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; padding:20px; box-sizing:border-box; backdrop-filter: blur(5px);">
-        <div style="background:#fff; color:#1e293b; padding:25px; border-radius:24px; width:100%; max-width:350px; text-align:left; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
-            <h2 style="margin-top:0; border-bottom:2px solid #f1f5f9; padding-bottom:15px; font-size: 1.5rem; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-cut" style="color: #25d366;"></i> Nossos Serviços
-            </h2>
-            
-            <ul style="list-style:none; padding:0; margin: 20px 0; line-height: 2.8; font-weight:600; font-size: 1.1rem;">
-                <li style="display:flex; justify-content:space-between; border-bottom: 1px dashed #e2e8f0;">
-                    <span>Cabelo (Degradê)</span> <span style="color: #25d366;">R$ 45</span>
+    <div id="modal-precos">
+        <div style="background:#fff; color:#1e293b; padding:25px; border-radius:24px; width:100%; max-width:350px; text-align:left;">
+            <h2 style="margin-top:0; border-bottom:2px solid #f1f5f9; padding-bottom:15px;">Serviços</h2>
+            <ul style="list-style:none; padding:0; margin: 20px 0; line-height: 2.5; font-weight:600;">
+                <li style="display:flex; justify-content:space-between; border-bottom: 1px dashed #eee;">
+                    <span>Corte</span> <span>R$ 45</span>
                 </li>
-                <li style="display:flex; justify-content:space-between; border-bottom: 1px dashed #e2e8f0;">
-                    <span>Barba Terapia</span> <span style="color: #25d366;">R$ 35</span>
-                </li>
-                <li style="display:flex; justify-content:space-between; border-bottom: 1px dashed #e2e8f0;">
-                    <span>Combo (Cabelo + Barba)</span> <span style="color: #25d366;">R$ 70</span>
+                <li style="display:flex; justify-content:space-between; border-bottom: 1px dashed #eee;">
+                    <span>Barba</span> <span>R$ 35</span>
                 </li>
                 <li style="display:flex; justify-content:space-between;">
-                    <span>Sobrancelha</span> <span style="color: #25d366;">R$ 15</span>
+                    <span>Combo</span> <span>R$ 70</span>
                 </li>
             </ul>
-            
-            <button onclick="document.getElementById('modal-precos').style.display='none'" style="width:100%; background:#1e293b; color:#fff; border:none; padding:15px; border-radius:12px; cursor:pointer; font-weight:800; font-size: 1rem;">
-                FECHAR TABELA
-            </button>
+            <button onclick="document.getElementById('modal-precos').style.display='none'" style="width:100%; background:#1e293b; color:#fff; border:none; padding:15px; border-radius:12px; cursor:pointer; font-weight:800;">FECHAR</button>
         </div>
     </div>
 
